@@ -1,25 +1,35 @@
 # Laxman Ultimate AI Edge Gallery Skill
 
-One AI Edge Gallery Agent Skill that bundles practical search, news, weather, Wikipedia, web-page extraction, calculations, conversions, developer utilities, generators, productivity helpers, maps and safe communication links.
+A free collection of installable AI Edge Gallery Agent Skills.
 
-## Main capabilities
+## Install from GitHub Pages
 
-Search • News • Weather • Wikipedia • Page reader • Calculator • Currency • Units • Time zones • QR • Hash • Base64 • JSON • Regex • Colors • Passwords • Random • IP • URLs • Maps • Notes • Pomodoro • Countdown • Tip • BMI • Percentages • Date difference • Text statistics • URI encoding • UUID.
+Base URL:
 
-Most local functions need no API key. Network features use public endpoints and depend on network/CORS availability.
+https://laxmannepal.github.io/AI-Skills/
 
-## Install
+Browse all skills:
 
-Google AI Edge Gallery requires a JS skill to expose `window['ai_edge_gallery_get_result']`, and its documentation recommends true web hosting such as GitHub Pages for JS assets plus `.nojekyll` so `SKILL.md` remains directly readable.
+https://laxmannepal.github.io/AI-Skills/free-skills/
 
-After GitHub Pages is enabled, the intended skill URL is:
+Each skill lives in:
 
-`https://laxmannepal.github.io/Ambition/`
+`free-skills/<skill-name>/`
 
-In AI Edge Gallery: Agent Skills → + → Load skill from URL → paste the URL above.
+## Featured
 
-If Pages is not enabled yet, use the local folder import method instead.
+- Ultimate Assistant
+- Web Search
+- Weather
+- Wikipedia
+- Calculator
+- Currency
+- Developer utilities
+- Productivity tools
+- Generators
 
-## Design
+No paid API key is required for the free collection. Network-backed skills require internet access.
 
-This is deliberately one skill, but internally it routes requests by an `action` JSON field. It does not silently send SMS/email/WhatsApp; it returns safe links where applicable.
+## Repository
+
+https://github.com/LaxmanNepal/AI-Skills
