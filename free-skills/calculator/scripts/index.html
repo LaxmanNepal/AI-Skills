@@ -1,1 +1,22 @@
-<!doctype html><html><body><script>window.ai_edge_gallery_get_result=async d=>{try{let o=JSON.parse(d),s=String(o.expression).replace(/×/g,'*').replace(/÷/g,'/');if(!/^[0-9+\-*/%().\s^]+$/.test(s))throw Error('Only numeric expressions are allowed');let r=Function('"use strict";return ('+s.replace(/\^/g,'**')+')')();if(!Number.isFinite(r))throw Error('Invalid result');return JSON.stringify({result:r})}catch(e){return JSON.stringify({error:e.message})}};</script></body></html>
+<!doctype html><html><body><script>
+window.ai_edge_gallery_get_result=async d=>{
+  const fail=message=>JSON.stringify({error:message});
+  try{
+    const o=JSON.parse(d);
+    let s=String(o.expression??'').replace(/×/g,'*').replace(/÷/g,'/').trim();
+    if(!s) throw Error('Expression is required');
+    if(s.length>200) throw Error('Expression is too long');
+    if(!/^[0-9+\-*/%().\s^]+$/.test(s)) throw Error('Only numeric expressions are allowed');
+    let i=0;
+    const ws=()=>{while(/\s/.test(s[i]||''))i++};
+    const eat=c=>{ws();if(s[i]===c){i++;return true}return false};
+    const number=()=>{ws();const start=i;let dots=0;while(i<s.length&&(s[i]>='0'&&s[i]<='9'||s[i]==='.')){if(s[i]==='.')dots++;i++}if(i===start||dots>1)throw Error('Invalid number');const n=Number(s.slice(start,i));if(!Number.isFinite(n))throw Error('Invalid number');return n};
+    const primary=()=>{ws();if(eat('(')){const v=expr();if(!eat(')'))throw Error('Missing closing parenthesis');return v}return number()};
+    const unary=()=>{ws();if(eat('+'))return unary();if(eat('-'))return -unary();return primary()};
+    const power=()=>{const a=unary();ws();if(eat('^')){const b=power();return a**b}return a};
+    const term=()=>{let v=power();for(;;){ws();if(eat('*'))v*=power();else if(eat('/')){const b=power();if(b===0)throw Error('Division by zero');v/=b}else if(eat('%')){const b=power();if(b===0)throw Error('Division by zero');v%=b}else break}return v};
+    const expr=()=>{let v=term();for(;;){ws();if(eat('+'))v+=term();else if(eat('-'))v-=term();else break}return v};
+    const result=expr();ws();if(i!==s.length)throw Error('Unexpected token');if(!Number.isFinite(result))throw Error('Invalid result');return JSON.stringify({result});
+  }catch(e){return fail(e?.message||'Invalid expression')}
+};
+</script></body></html>
