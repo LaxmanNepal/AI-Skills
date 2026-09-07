@@ -1,37 +1,44 @@
 # Free AI Edge Gallery Skills
 
-This folder is the free, no-API-key collection for Laxman Ultimate AI Edge Gallery.
+A collection of independent, installable AI Edge Gallery skills. Every skill has its own `SKILL.md` and JavaScript runtime under `scripts/index.html`.
 
-## Included
+## Skills
 
-- `ultimate-assistant` — all-in-one toolbox
-- `calculator`
-- `weather`
-- `wikipedia`
-- `news-search`
-- `web-search`
-- `currency`
-- `unit-converter`
-- `timezone`
-- `qr-code`
-- `hash`
-- `base64`
-- `json-formatter`
-- `regex-tester`
-- `color-tools`
-- `password-generator`
-- `random-generator`
-- `ip-lookup`
-- `maps`
-- `notes`
-- `pomodoro`
-- `countdown`
-- `tip-calculator`
-- `bmi`
-- `percentage`
-- `date-difference`
-- `text-statistics`
-- `uri-tools`
-- `uuid`
+1. `ultimate-assistant` — all-in-one toolbox
+2. `calculator`
+3. `weather`
+4. `wikipedia`
+5. `news-search`
+6. `web-search`
+7. `currency`
+8. `unit-converter`
+9. `timezone`
+10. `qr-code`
+11. `hash`
+12. `base64`
+13. `json-formatter`
+14. `regex-tester`
+15. `color-tools`
+16. `password-generator`
+17. `random-generator`
+18. `ip-lookup`
+19. `url`
+20. `maps`
+21. `notes`
+22. `pomodoro`
+23. `countdown`
+24. `tip-calculator`
+25. `bmi`
+26. `percentage`
+27. `date-difference`
+28. `text-statistics`
+29. `uri-tools`
+30. `uuid`
 
-All listed skills are designed to work without a paid API key. Network-based skills still require internet access.
+## API key policy
+
+These skills do not require a paid API key. Network-backed skills require internet access and can fail if the device or endpoint blocks requests.
+
+## AI Edge Gallery compatibility
+
+Each JavaScript skill follows the official Agent Skills structure: a root `SKILL.md` and `scripts/index.html` exposing `window['ai_edge_gallery_get_result']`. AI Edge Gallery recommends serving JavaScript skills through a real web host such as GitHub Pages rather than raw GitHub URLs.
