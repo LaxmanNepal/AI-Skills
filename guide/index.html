@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Install Laxman AI Skills in Google AI Edge Gallery.">
+<title>Install AI Skills</title>
+<style>
+:root{--bg:#f6f7fb;--card:rgba(255,255,255,.84);--text:#111827;--muted:#667085;--line:#e7e8ee;--accent:#635bff}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0%,#e8e7ff,transparent 30%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif}.wrap{max-width:900px;margin:auto;padding:24px}.top{padding:55px 0 28px}.pill{display:inline-block;padding:7px 11px;border-radius:999px;background:#ecebff;color:#554bd3;font-weight:700;font-size:13px}h1{font-size:clamp(38px,7vw,68px);line-height:1;letter-spacing:-.05em;margin:18px 0}p{color:var(--muted);line-height:1.65}.steps{display:grid;gap:14px;margin-top:28px}.step{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px}.num{width:34px;height:34px;border-radius:10px;background:#111827;color:white;display:grid;place-items:center;font-weight:800}.step h2{margin:14px 0 7px;font-size:20px}.url{display:flex;gap:8px;align-items:center;margin-top:14px}.url input{flex:1;min-width:0;padding:12px;border:1px solid var(--line);border-radius:11px;background:#fff;font:inherit}.btn{border:1px solid var(--line);background:#fff;border-radius:11px;padding:12px 14px;font-weight:750;cursor:pointer}.primary{background:#111827;color:#fff;border-color:#111827}.back{display:inline-block;margin-top:28px;color:#554bd3;font-weight:750}.note{margin-top:20px;padding:16px;border-left:4px solid var(--accent);background:#fff;border-radius:10px;color:var(--muted)}code{background:#f0f1f5;padding:2px 5px;border-radius:5px}@media(max-width:600px){.url{align-items:stretch;flex-direction:column}.url .btn{width:100%}}
+</style>
+</head>
+<body><main class="wrap">
+<section class="top"><span class="pill">FREE · OPEN · 30 SKILLS</span><h1>Install Laxman AI Skills</h1><p>Use these installable Agent Skills with Google AI Edge Gallery. Each skill is hosted as a folder containing its <code>SKILL.md</code> and runtime.</p></section>
+<section class="steps">
+<article class="step"><div class="num">1</div><h2>Open Agent Skills</h2><p>In AI Edge Gallery, open the Agent Skills section and choose the option to add or load a skill from a URL.</p></article>
+<article class="step"><div class="num">2</div><h2>Copy a skill folder URL</h2><p>Use the folder URL below. The folder is the install target; the <code>SKILL.md</code> inside it provides the skill definition.</p><div class="url"><input id="skillUrl" readonly><button class="btn primary" onclick="copyUrl()">Copy URL</button></div></article>
+<article class="step"><div class="num">3</div><h2>Load the skill</h2><p>Paste the URL into the Gallery's URL loader and confirm the import. After installation, invoke the skill naturally in chat.</p></article>
+<article class="step"><div class="num">4</div><h2>Verify the skill definition</h2><p>If import fails, open the skill's <code>SKILL.md</code> URL in a browser. It should be served as a live file from GitHub Pages, not a normal GitHub repository page.</p></article>
+</section>
+<div class="note"><strong>Tip:</strong> Network-backed skills need internet access. Local-only utilities can work without an external API key.</div>
+<a class="back" href="../">← Back to marketplace</a>
+<script>const p=new URLSearchParams(location.search);const skill=p.get('skill')||'ultimate-assistant';const url='https://laxmannepal.github.io/AI-Skills/free-skills/'+encodeURIComponent(skill)+'/';document.getElementById('skillUrl').value=url;function copyUrl(){navigator.clipboard?.writeText(url);event.target.textContent='Copied ✓';setTimeout(()=>event.target.textContent='Copy URL',1200)}</script>
+</main></body></html>
