@@ -1,0 +1,26 @@
+name: Quality Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Validate skill metadata
+        run: python3 scripts/validate-skills.py
+      - name: Validate runtime contract
+        run: python3 scripts/runtime-audit.py
+      - name: Run runtime smoke tests
+        run: python3 scripts/test-runtime-contract.py
+      - name: Validate manifest
+        run: python3 scripts/generate-manifest.py
